@@ -25,9 +25,9 @@ ostream &operator<<(ostream &os, pair<T, U> &a) {
 }
 /*PAIR*/
 
-/*ARR*/
-template<typename T>
-ostream &operator<<(ostream &os, vector<T> &a) {
+/*ITERABLE*/
+template<template<typename> typename V, typename T>
+ostream &operator<<(ostream &os, V<T> &a) {
     os << "{";
     bool was = false;
     for (auto &x: a) {
@@ -40,7 +40,7 @@ ostream &operator<<(ostream &os, vector<T> &a) {
     os << "}";
     return os;
 }
-/*ARR*/
+/*ITERABLE*/
 /*OUTPUT*/
 
 /*DEBUG*/
