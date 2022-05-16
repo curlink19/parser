@@ -148,8 +148,10 @@ typedef unsigned long long ull;
 typedef long long ll;
 typedef long double ld;
 
+using i64 = int64_t;
+
 /*curlink v1.9*/
 
 int main() {
-  return 0;
+    return 0;
 }
