@@ -43,24 +43,24 @@ ostream &operator<<(ostream &os, V<T> &a) {
 /*ITERABLE*/
 /*OUTPUT*/
 
+const int COLOR_DEBUG = 93;
+
 /*DEBUG*/
 template<typename T>
 inline void debug(const char* sdbg, T x) {
-    cerr << "The value of " << sdbg << " is " << x << "\n";
+    cerr << "\x1B[" << COLOR_DEBUG << "m" << sdbg << " = " << x << "\033[0m";
 };
 
 template<typename T, typename... U>
 inline void debug(const char* sdbg, T h, U... t) {
-    cerr << "The value of ";
     while (*sdbg != ',') {
-        cerr << *sdbg++;
+        cerr << "\x1B[" << COLOR_DEBUG << "m" << *sdbg++ << "\033[0m";
     }
-    cerr << " is " << h << "\n";
+    cerr << "\x1B[" << COLOR_DEBUG << "m" << " = " << h << "\033[0m\n";
     debug(sdbg + 1, t...);
-    cerr << "\n";
 }
 
-#define value(...) debug(#__VA_ARGS__, __VA_ARGS__)
+#define value(...) cerr << "------------------------------------------"; cerr << "file: " << "\x1B[" << COLOR_DEBUG << "m" << __FILE__ << "\033[0m" << "-----line: " << "\x1B[" << COLOR_DEBUG << "m" << __LINE__ << "\033[0m" << "-----func: " << "\x1B[" << COLOR_DEBUG << "m" << __PRETTY_FUNCTION__ << "\033[0m-----\n"; debug(#__VA_ARGS__, __VA_ARGS__); cerr << "\n------------------------------------------------------------------------------------------------\n\n\n\n\n"
 /*DEBUG*/
 
 template<typename T>
